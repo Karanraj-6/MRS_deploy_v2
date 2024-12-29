@@ -12,12 +12,12 @@ import tensorflow as tf
 # Cache the model loading function to avoid reloading on every run
 @st.cache_resource
 def load_model():
-    model_url = "https://moviesrecommendationsystem.s3.eu-north-1.amazonaws.com/similarity.pkl"
     model_path = "similarity.pkl"
 
     # Check if the model file exists locally
     if not os.path.exists(model_path):
         # Download the model from the provided URL
+        model_url = "https://moviesrecommendationsystem.s3.eu-north-1.amazonaws.com/similarity.pkl"
         response = requests.get(model_url)
         if response.status_code == 200:
             # Save the model to the local path
